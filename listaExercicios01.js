@@ -293,3 +293,123 @@ function writingANumber() {
     console.log(number);
   }
 }
+
+// Exercício 11:
+// Escreva um programa que solicita ao usuário 5 números e calcula a soma total utilizando um loop for.
+
+function sum() {
+  let userInput = 0;
+  let numbers = [];
+  let sum = 0;
+
+  do {
+    userInput = Number(prompt('Digite cinco números para processar a soma: '));
+    numbers.push(userInput);
+  } while (numbers.length < 5);
+
+  const verification = numbers.some((elem) => isNaN(elem));
+
+  if (verification) {
+    console.log(
+      'Você digitou outro caractere a não ser um numeral! Digite novamente ',
+    );
+  } else {
+    for (let i = 0; i < numbers.length; i++) {
+      sum += numbers[i];
+    }
+    console.log(`O Valor total da soma é: ${sum}`);
+  }
+}
+
+// Exercício 12:
+// Crie um programa que exibe a tabuada de um número fornecido pelo usuário (de 1 a 10) utilizando um loop for.
+
+function multiplicationTable() {
+  let userInput = Number(
+    prompt('Insira um número inteiro de 1 a 10 para calcular a sua tabuada: '),
+  );
+
+  if (isNaN(userInput)) {
+    console.log(
+      'Você digitou um valor diferente de numeral.\nDigite um valor válido.\nSaindo...',
+    );
+  } else if (!Number.isInteger(userInput)) {
+    console.log(
+      'O número digitado não é um inteiro!\nDigite um valor válido.\nSaindo...',
+    );
+  } else {
+    for (let i = 0; i <= 10; i++) {
+      console.log(`${userInput} * ${i} = ${userInput * i}`);
+    }
+  }
+}
+
+// Exercício 13.
+// Fazer um algoritmo para receber números decimais até que o usuário digite 0 e fazer a média aritmética desses números.
+
+// Com métodos de Array -> diferente do feito em aula:
+
+function average() {
+  let userInput;
+  let numbers = [];
+
+  do {
+    userInput = Number(prompt('Digite a nota para cáculo da média: '));
+    numbers.push(userInput);
+  } while (userInput !== 0);
+
+  numbers.pop();
+  const verification = numbers.some((elem) => isNaN(elem));
+
+  if (verification) {
+    console.log(
+      'Você digitou outro caractere a não ser um numeral! Digite novamente ',
+    );
+  } else {
+    let sum = numbers.reduce((acc, num) => acc + num);
+
+    let average1 = sum / numbers.length;
+    console.log(`A média final é: ${average1}`);
+  }
+}
+
+// Exercício 14:
+// Crie um programa que calcula o fatorial de um número fornecido pelo usuário utilizando um loop for ou while.
+
+// Exercício 15:
+// Escreva um programa que gera e imprime os primeiros 10 números da sequência de Fibonacci utilizando um loop for.
+
+// OBS --> a partir do 5 ao 10--> tratar os erros de entrada!!
+
+const executarExercicios = (nomeDaFuncao) => nomeDaFuncao();
+// Digitar abaixo (entre os parênteses) nome da função que se quer executar:
+executarExercicios(average);
+
+/*
+A Sequência de Fibonacci é uma sequência numérica infinita onde cada número, a partir do terceiro, é a soma dos dois números anteriores. A sequência começa tipicamente com 0 e 1, ou 1 e 1, e prossegue da seguinte forma:
+
+Começando com 0 e 1:
+
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
+
+Começando com 1 e 1:
+
+1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
+
+Formalmente, a sequência pode ser definida pela seguinte fórmula de recorrência:
+
+Fn =Fn−1 +Fn−2,
+​
+onde  Fn representa o n-ésimo termo da sequência, com as condições iniciais F0= 0 e F1 =1 (ou F1 =1 e F2 =1 dependendo da convenção).
+
+Essa sequência aparece surpreendentemente em diversos fenômenos da natureza, como na disposição das pétalas de algumas flores, nos padrões espirais de conchas e sementes de girassol, e até mesmo em proporções do corpo humano. Além disso, ela possui aplicações em áreas como ciência da computação, análise de mercados financeiros e arte.
+
+Uma propriedade interessante da Sequência de Fibonacci é a sua relação com a proporção áurea (ϕ≈1.618). À medida que a sequência avança, a razão entre um número e o seu antecessor se aproxima cada vez mais desse valor. Por exemplo:
+
+2 / 1 = 2
+3 / 2 = 1.5
+5 / 3 ≈ 1.667
+8 / 5 = 1.6
+13 / 8 = 1.625
+21 / 13 ≈ 1.615
+Essa conexão com a proporção áurea contribui para a sua ocorrência em padrões esteticamente agradáveis e equilibrados na natureza e na arte. */
