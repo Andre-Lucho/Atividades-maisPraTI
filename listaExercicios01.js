@@ -249,3 +249,47 @@ function triangleCheck() {
   }
 }
 
+// Exercício 07:
+// As maçãs custam R$ 0,30 se forem compradas menos do que uma dúzia, e R$ 0,25 se forem compradas pelo menos doze.
+// Escreva um algoritmo que leia o número de maçãs compradas, calcule e escreva o valor total da compra.
+
+function buyingApples() {
+  let apples = Number(prompt('Digite a quantidade de maças compradas: '));
+  apples <= 12
+    ? console.log(`O valor total da compra é: ${(apples * 0.3).toFixed(2)}`)
+    : console.log(`O valor total da compra é: ${(apples * 0.25).toFixed(2)}`);
+}
+
+// Exercício 08:
+// Escreva um algoritmo para ler 2 valores (considere que não serão lidos valores iguais) e escreve-los em ordem crescente.
+
+function orderingNumbers() {
+  let numbers = [];
+
+  let number1 = Number(prompt('Digite o primeiro número: '));
+  numbers.push(number1);
+  let number2 = Number(prompt('Digite o segundo número: '));
+  numbers.push(number2);
+
+  numbers.sort((a, b) => a - b).forEach((number) => console.log(number));
+}
+
+// Exercício 09:
+// Implemente um programa que exibe uma contagem regressiva de 10 até 1 no console utilizando um loop for.
+
+function countdown() {
+  for (let index = 10; index >= 1; index--) {
+    console.log(index);
+  }
+}
+
+// Exercício 10:
+// Escreva um algoritmo para ler um número inteiro e escrevê-lo na tela 10 vezes.
+
+function writingANumber() {
+  let number = Number(prompt('Digite um número: '));
+
+  for (let index = 0; index < 10; index++) {
+    console.log(number);
+  }
+}
