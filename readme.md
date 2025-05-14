@@ -1,7 +1,8 @@
 # Orientações para o execução dos exercícios:
 
 O repositório possui 2 arquivos:
-1 - A lista de exercícios em formato pdf;
+
+1 - A lista de exercícios em formato pdf;  
 2- A resolução dos exercícios escritos em JavaScript, presentes no arquivo _ListaExercícios01.js_.
 As resoluções estão abaixo de cada enunciado das questões, que estão comentadas com '//'.
 
@@ -35,6 +36,7 @@ Com o Node.js e o Git instalados, é necessário clonar o repositório onde est�
 3. Digite git clone https://github.com/Andre-Lucho/Atividades-maisPraTI.git;
 4. Entre na pasta 'Atividades-maisPraTI';
 5. Intale o pacote 'prompt-sync' digitando: npm install;
-6. Siga as orientações para a execução de cada exercício, conforme descrito em **Importante** .
+6. Siga as orientações para a execução de cada exercício, conforme descrito em **Importante**.
 
+     
 **Bons Estudos!**
