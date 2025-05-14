@@ -376,40 +376,55 @@ function average() {
 // Exercício 14:
 // Crie um programa que calcula o fatorial de um número fornecido pelo usuário utilizando um loop for ou while.
 
+function fatorial() {
+  let userInput = Number(
+    prompt('Insira um número para calcular o seu fatorial: '),
+  );
+  let result = 1;
+
+  if (isNaN(userInput)) {
+    console.log(
+      'Você digitou um valor diferente de um numeral.\nDigite um valor válido.\nSaindo...',
+    );
+  } else if (!Number.isInteger(userInput)) {
+    console.log(
+      'O número digitado não é um inteiro!\nDigite um valor válido.\nSaindo...',
+    );
+  } else {
+    for (let i = 1; i <= userInput; i++) {
+      result *= i;
+    }
+    console.log(result);
+  }
+}
+
 // Exercício 15:
 // Escreva um programa que gera e imprime os primeiros 10 números da sequência de Fibonacci utilizando um loop for.
 
+function sequenciaFibonacci() {
+  let a = 0;
+  let b = 1;
+  let temp;
+
+  console.log(a, b);
+
+  for (let i = 3; i <= 10; i++) {
+    temp = a + b;
+    console.log(temp);
+    a = b;
+    b = temp;
+  }
+}
+
 // OBS --> a partir do 5 ao 10--> tratar os erros de entrada!!
 
-const executarExercicios = (nomeDaFuncao) => nomeDaFuncao();
+const executarExercicios = (nomeDaFuncao) => {
+  typeof nomeDaFuncao == 'function'
+    ? nomeDaFuncao()
+    : console.log(
+        'Você inseriu um nome inválido para a função que deseja executar!!\nInsira novamente o nome correto da função correspondente ao exercício desejado',
+      );
+};
+
 // Digitar abaixo (entre os parênteses) nome da função que se quer executar:
-executarExercicios(average);
-
-/*
-A Sequência de Fibonacci é uma sequência numérica infinita onde cada número, a partir do terceiro, é a soma dos dois números anteriores. A sequência começa tipicamente com 0 e 1, ou 1 e 1, e prossegue da seguinte forma:
-
-Começando com 0 e 1:
-
-0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
-
-Começando com 1 e 1:
-
-1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
-
-Formalmente, a sequência pode ser definida pela seguinte fórmula de recorrência:
-
-Fn =Fn−1 +Fn−2,
-​
-onde  Fn representa o n-ésimo termo da sequência, com as condições iniciais F0= 0 e F1 =1 (ou F1 =1 e F2 =1 dependendo da convenção).
-
-Essa sequência aparece surpreendentemente em diversos fenômenos da natureza, como na disposição das pétalas de algumas flores, nos padrões espirais de conchas e sementes de girassol, e até mesmo em proporções do corpo humano. Além disso, ela possui aplicações em áreas como ciência da computação, análise de mercados financeiros e arte.
-
-Uma propriedade interessante da Sequência de Fibonacci é a sua relação com a proporção áurea (ϕ≈1.618). À medida que a sequência avança, a razão entre um número e o seu antecessor se aproxima cada vez mais desse valor. Por exemplo:
-
-2 / 1 = 2
-3 / 2 = 1.5
-5 / 3 ≈ 1.667
-8 / 5 = 1.6
-13 / 8 = 1.625
-21 / 13 ≈ 1.615
-Essa conexão com a proporção áurea contribui para a sua ocorrência em padrões esteticamente agradáveis e equilibrados na natureza e na arte. */
+executarExercicios(sequenciaFibonacci);
