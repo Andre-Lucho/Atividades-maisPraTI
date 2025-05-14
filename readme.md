@@ -4,7 +4,7 @@ O repositório possui 3 arquivos:
 
 1 - A lista de exercícios em formato pdf;  
 2- A resolução dos exercícios escritos em JavaScript, presentes no arquivo _ListaExercícios01.js_.
-As resoluções estão abaixo de cada enunciado das questões, que estão comentadas com '//';
+As resoluções estão abaixo de cada enunciado das questões, que estão comentadas com '//';  
 3- O arquivo Readme.md.
 
 ## Importante:
