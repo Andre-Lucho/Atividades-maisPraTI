@@ -1,11 +1,12 @@
 # Orientações para o execução dos exercícios:
 
-O repositório possui 3 arquivos:
+O repositório possui 4 arquivos:
 
 1 - A lista de exercícios em formato pdf;  
 2- A resolução dos exercícios escritos em JavaScript, presentes no arquivo _ListaExercícios01.js_.
 As resoluções estão abaixo de cada enunciado das questões, que estão comentadas com '//';  
-3- O arquivo Readme.md.
+3- O arquivo Readme.md.  
+4- O arquivo package.json
 
 ## Importante:
 
