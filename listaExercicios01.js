@@ -430,4 +430,4 @@ const executarExercicios = (nomeDaFuncao) => {
 };
 
 // Digitar abaixo (entre os parênteses) nome da função que se quer executar sem os parênteses:
-executarExercicios(triangleCheck);
+executarExercicios();
