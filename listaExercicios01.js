@@ -5,7 +5,7 @@ const prompt = require('prompt-sync')({ sigint: true });
 // Exercício 01:
 // Escreva um programa que recebe um número inteiro e verifica se ele é par ou ímpar utilizando uma estrutura de controle if.
 
-function numerosInteiros() {
+function integers() {
   let userInput = Number(
     prompt(
       'Verificação de números pares ou ímpares!\nDigite um número inteiro: ',
@@ -42,12 +42,12 @@ function numerosInteiros() {
 // adulto --> 18 - 64 anos
 // idoso --> acima de 65 até 130
 
-function faixaEtaria() {
+function ageRange() {
   let age = Number(prompt('Verificação de faixa etária! Digite sua idade: '));
 
   if (isNaN(age)) {
     console.log(
-      'Você digitou outro caractere a não ser um numeral! Digite novamente ',
+      'Você digitou um valor diferentes de um numeral! Digite novamente... ',
     );
   } else {
     if (age > 1 && age <= 11) {
@@ -73,12 +73,12 @@ function faixaEtaria() {
 // Recuperação --> 7 - 5
 // Reprovado --> <=5
 
-function passingGrade() {
+function grade() {
   let grade = Number(prompt('Verificação de aprovação! Digite sua nota: '));
 
   if (isNaN(grade)) {
     console.log(
-      'Você digitou outro caractere a não ser um numeral! Digite novamente ',
+      'Você digitou um valor diferentes de um numeral! Digite novamente... ',
     );
   } else {
     if (grade > 7 && grade <= 10) {
@@ -101,45 +101,6 @@ function passingGrade() {
 
 function interactiveMenu() {
   let inputNumber;
-
-  /* 
-  1) Utilizando While:
-  ---------------------------
-
-  let userInput = prompt(
-    'Menu Interativo! Digite uma opção:\n1. Opção 01\n2. Opção 02\n3. Opção 03\nPara sair, digite "sair"',
-  );
-
-  while (userInput) {
-    if (userInput.toLowerCase() === 'sair') {
-      console.log('Saindo do sistema...');
-      break;
-    } else {
-      inputNumber = Number(userInput);
-
-      switch (inputNumber) {
-        case 1:
-          console.log('Você digitou a opção 1');
-          break;
-        case 2:
-          console.log('Você digitou a opção 2');
-          break;
-        case 3:
-          console.log('Você digitou a opção 3');
-          break;
-        default:
-          console.log('Você digitou uma opção inválida');
-          break;
-      }
-    }
-    userInput = false;
-  }
- */
-
-  /*
-
-  2) Utilizando Do...While:
-    ---------------------------  */
 
   do {
     userInput = prompt(
@@ -189,19 +150,25 @@ function imcCalculator() {
   let userweight = Number(prompt('Calculadora IMC\nDigite seu peso atual: '));
   let userheigh = Number(prompt('Digite sua altura: '));
 
-  let imc = userweight / userheigh ** 2;
-  let correctedIMC = imc.toFixed(1);
+  if (isNaN(userweight) || isNaN(userheigh)) {
+    console.log(
+      'Você digitou um ou mais valores diferentes de um numeral.\nDigite um valor válido.\nSaindo...',
+    );
+  } else {
+    let imc = userweight / userheigh ** 2;
+    let correctedIMC = imc.toFixed(1);
 
-  console.log(`Seu valor de IMC é ${correctedIMC}`);
+    console.log(`Seu valor de IMC é ${correctedIMC}`);
 
-  if (correctedIMC < 18.5) {
-    return ' XX Você se enquadra na categoria "Abaixo do peso"';
-  } else if (correctedIMC >= 18.5 && correctedIMC < 24.9) {
-    return 'Você está no seu peso ideal!';
-  } else if (correctedIMC >= 25 && correctedIMC < 29.9) {
-    return 'Você se enquadra na categoria "Sobrepeso"';
-  } else if (correctedIMC >= 30) {
-    return 'Você se enquadra na categoria "Obesidade"';
+    if (correctedIMC < 18.5) {
+      console.log('Você se enquadra na categoria "Abaixo do peso"');
+    } else if (correctedIMC >= 18.5 && correctedIMC < 24.9) {
+      console.log('Você está no seu peso ideal!');
+    } else if (correctedIMC >= 25 && correctedIMC < 29.9) {
+      console.log('Você se enquadra na categoria "Sobrepeso"');
+    } else if (correctedIMC >= 30) {
+      console.log('Você se enquadra na categoria "Obesidade"');
+    }
   }
 }
 
@@ -220,32 +187,42 @@ function triangleCheck() {
     prompt('Verificação de Triângulos!\nDigite um valor para o lado C: '),
   );
 
-  const aB = sideA == sideB;
-  const aC = sideA == sideC;
-  const bC = sideB == sideC;
-
-  if (sideA + sideB > sideC && sideA + sideC > sideB && sideB + sideC > sideA) {
-    console.log('Os valores fornecidos podem formar um triângulo');
-    switch (true) {
-      case (aB || aC || bC) && (!aB || !aC || !bC):
-        console.log(
-          'O triângulo formado com os lados fornecidos forma um triângulo isósceles',
-        );
-        break;
-
-      case !aB && !aC && !bC:
-        console.log(
-          'O triângulo formado com os lados fornecidos forma um triângulo escaleno',
-        );
-        break;
-      case aB && aC && bC:
-        console.log(
-          'O triângulo formado com os lados fornecidos forma um triângulo equilátero',
-        );
-        break;
-    }
+  if (isNaN(sideA) || isNaN(sideB) || isNaN(sideC)) {
+    console.log(
+      'Você digitou um valor diferente de um numeral.\nDigite um valor válido.\nSaindo...',
+    );
   } else {
-    console.log('Os valores fornecidos não formam um triângulo');
+    const aB = sideA == sideB;
+    const aC = sideA == sideC;
+    const bC = sideB == sideC;
+
+    if (
+      sideA + sideB > sideC &&
+      sideA + sideC > sideB &&
+      sideB + sideC > sideA
+    ) {
+      console.log('Os valores fornecidos podem formar um triângulo');
+
+      switch (true) {
+        case (aB || aC || bC) && (!aB || !aC || !bC):
+          console.log(
+            'O triângulo formado com os lados fornecidos forma um triângulo isósceles',
+          );
+          break;
+        case !aB && !aC && !bC:
+          console.log(
+            'O triângulo formado com os lados fornecidos forma um triângulo escaleno',
+          );
+          break;
+        case aB && aC && bC:
+          console.log(
+            'O triângulo formado com os lados fornecidos forma um triângulo equilátero',
+          );
+          break;
+      }
+    } else {
+      console.log('Os valores fornecidos não formam um triângulo');
+    }
   }
 }
 
@@ -255,9 +232,20 @@ function triangleCheck() {
 
 function buyingApples() {
   let apples = Number(prompt('Digite a quantidade de maças compradas: '));
-  apples <= 12
-    ? console.log(`O valor total da compra é: ${(apples * 0.3).toFixed(2)}`)
-    : console.log(`O valor total da compra é: ${(apples * 0.25).toFixed(2)}`);
+
+  if (isNaN(apples)) {
+    console.log(
+      'Você digitou um valor diferente de numeral.\nDigite um valor válido.\nSaindo...',
+    );
+  } else if (!Number.isInteger(apples)) {
+    console.log(
+      'O número digitado não é um inteiro!\nDigite um valor válido.\nSaindo...',
+    );
+  } else {
+    apples <= 12
+      ? console.log(`O valor total da compra é: ${(apples * 0.3).toFixed(2)}`)
+      : console.log(`O valor total da compra é: ${(apples * 0.25).toFixed(2)}`);
+  }
 }
 
 // Exercício 08:
@@ -271,7 +259,15 @@ function orderingNumbers() {
   let number2 = Number(prompt('Digite o segundo número: '));
   numbers.push(number2);
 
-  numbers.sort((a, b) => a - b).forEach((number) => console.log(number));
+  const verification = numbers.some((elem) => isNaN(elem));
+
+  if (verification) {
+    console.log(
+      'Você digitou outro caractere a não ser um numeral! Digite novamente ',
+    );
+  } else {
+    numbers.sort((a, b) => a - b).forEach((num) => console.log(num));
+  }
 }
 
 // Exercício 09:
@@ -289,8 +285,18 @@ function countdown() {
 function writingANumber() {
   let number = Number(prompt('Digite um número: '));
 
-  for (let index = 0; index < 10; index++) {
-    console.log(number);
+  if (isNaN(number)) {
+    console.log(
+      'Você digitou um valor diferente de numeral.\nDigite um valor válido.\nSaindo...',
+    );
+  } else if (!Number.isInteger(number)) {
+    console.log(
+      'O número digitado não é um inteiro!\nDigite um valor válido.\nSaindo...',
+    );
+  } else {
+    for (let index = 0; index < 10; index++) {
+      console.log(number);
+    }
   }
 }
 
@@ -405,7 +411,6 @@ function sequenciaFibonacci() {
   let a = 0;
   let b = 1;
   let temp;
-
   console.log(a, b);
 
   for (let i = 3; i <= 10; i++) {
@@ -416,8 +421,6 @@ function sequenciaFibonacci() {
   }
 }
 
-// OBS --> a partir do 5 ao 10--> tratar os erros de entrada!!
-
 const executarExercicios = (nomeDaFuncao) => {
   typeof nomeDaFuncao == 'function'
     ? nomeDaFuncao()
@@ -426,5 +429,5 @@ const executarExercicios = (nomeDaFuncao) => {
       );
 };
 
-// Digitar abaixo (entre os parênteses) nome da função que se quer executar:
-executarExercicios(sequenciaFibonacci);
+// Digitar abaixo (entre os parênteses) nome da função que se quer executar sem os parênteses:
+executarExercicios(triangleCheck);
