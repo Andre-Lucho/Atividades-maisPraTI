@@ -11,11 +11,14 @@ As resoluções estão abaixo de cada enunciado das questões, que estão coment
 ## Importante:
 
 Cada exercícios está dentro de uma funções JavaScript.
-Para executá-lo, é necessário rolar a tela da IDE para baixo, até o final da página.
-Lá teremos a função 'executarExercicios' e sua chamada **'executarExercicios()'**.
+Para executá-lo, é necessário rolar inteiramente a tela da IDE para baixo, até o final da página.
+Lá, teremos a função 'executarExercicios' e sua chamada **'executarExercicios()'**.
 Você deve colocar **APENAS** o nome da função correspondente a resolução do exercício que gostaria de executar dentro do parênteses da chamada da função **'executarExercicios()'**.
 
-Os exercícios são executados em um terminal.
+Os exercícios são executados em um terminal:
+
+1. Com o terminal aberto, já devidamente dentro do caminho da pasta clonada do repositório, digitar: node listaExercicios01.js;
+2. O exercício deve ter sido executado.
 
 Para a execução, é necessário ter instalado a ferramena de versionamento Git, o Node.js e um gerenciador de pacotes de sua escolha (npm, pnpm...).
 
@@ -40,5 +43,4 @@ Com o Node.js e o Git instalados, é necessário clonar o repositório onde est�
 5. Intale o pacote 'prompt-sync' digitando: npm install;
 6. Siga as orientações para a execução de cada exercício, conforme descrito em **Importante**.
 
-     
 **Bons Estudos!**
