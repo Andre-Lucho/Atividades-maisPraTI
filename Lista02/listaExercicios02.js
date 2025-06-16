@@ -181,6 +181,39 @@ function debounce(fn, delay) {
 Implemente function memoize(fn) que armazene em cache chamadas anteriores de fn (por argumentos), retornando resultados instantâneos em
 repetidas invocações. */
 
+function memoize(fn) {
+  const cache = new Map();
+
+  return function (...args) {
+    const key = JSON.stringify(args);
+    if (cache.has(key)) {
+      return cache.get(key);
+    }
+
+    const result = fn.apply(this, args);
+    cache.set(key, result);
+    return result;
+  };
+}
+
+//  Exemplo com recursividade:
+// Função principal
+function mainFunction(n) {
+  // condicional --> caso base
+  if (n > x) return n;
+  // caso recursivo
+  return mainFunction(n); // ...
+  // --> por exemplo a função mainFunction aplicada recursivamente
+}
+
+// Função memoize da função mainFunction
+const memoizedMainFunction = memoize(function mainFunction(n) {
+  memoizedMainFunction(n); //...
+  // --> por exemplo a função memoizedMainFunction aplicada recursivamente
+});
+
+// console.log(memoizedMainFunction(n));
+
 /*
 Seção 3: Arrays e Objetos Complexos
 ------------------------------------------------------------------------------
