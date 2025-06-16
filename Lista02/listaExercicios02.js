@@ -147,13 +147,33 @@ function fatorial(n) {
     console.log('Erro: ', error.messege);
   }
 }
-console.log(fatorial(-5));
 
 /*
 5- Debounce​
 ---------------------------------------
 Crie function debounce(fn, delay) que receba uma função fn e um delay em ms, retornando uma nova função que só executa fn se não for
 chamada novamente dentro do intervalo. */
+
+function debounce(fn, delay) {
+  let timer = null;
+
+  return function (...args) {
+    if (timer) {
+      clearTimeout(timer);
+    }
+
+    timer = setTimeout(() => {
+      fn.aply(this, args);
+    }, delay);
+  };
+
+  function mainFunction() {
+    // Função principal que quero que tenha eu tempo de execução e re-execução controlados
+  }
+
+  let mainFunctionDebounced = debounce(mainFunction, 1000);
+  // Função 'debounced' da função 'mainFunction'
+}
 
 /*
 6. Memoization​
