@@ -223,10 +223,67 @@ Seção 3: Arrays e Objetos Complexos
 Dado um array produtos = [{ nome, preco }, …], crie uma função que retorne um novo array apenas com os nomes, 
 ordenados por preço crescente, usando map, sort. */
 
+let product = [
+  { nome: 'Computador', preco: 'R$3000' },
+  { nome: 'Celular', preco: 'R$1500' },
+  { nome: 'Carro', preco: 'R$15000' },
+];
+
+function priceOrder(prod) {
+  let newProduct = prod.slice();
+  const regexp = /[R$']/gi;
+
+  const newProdOrder = newProduct
+    .map((prd) => {
+      const price = Number(prd.preco.replace(regexp, ''));
+      return { ...prd, preco: price };
+    })
+    .sort((a, b) => a.preco - b.preco);
+  const newNameReange = newProdOrder.map((pr) => pr.nome);
+
+  return newNameReange;
+}
+
+console.log(priceOrder(product));
+
 /*
 8. Agrupamento por Propriedade​
 ---------------------------------------
 Em vendas = [{ cliente, total }, …], use reduce para gerar um objeto onde cada chave é um cliente e o valor é a soma de todos os seus total. */
+
+let vendas = [
+  {
+    cliente: 'André',
+    compras: [
+      { camisa: 'Polo-Azul', total: 50 },
+      { bermuda: 'Adidas-Verde', total: 100 },
+      { tenis: 'NikeAir', total: 200 },
+    ],
+  },
+  {
+    cliente: 'João',
+    compras: [
+      { camisa: 'Polo-Vermelha', total: 65 },
+      { calça: 'Social-002', total: 80 },
+      { sapato: 'preto', total: 320 },
+    ],
+  },
+  {
+    cliente: 'Sofia',
+    compras: [
+      { blusa: 'Rosa002', total: 74 },
+      { bijuteria: '0232', total: 60 },
+    ],
+  },
+  {
+    cliente: 'Renata',
+    compras: [
+      { capaCelular: 'Rosa002', total: 24 },
+      { enfeite: '032', total: 15 },
+      { caderno: 'Tilibra55', total: 40 },
+    ],
+  },
+];
 
 /*
 9. Conversão Entre Formatos​
@@ -236,3 +293,5 @@ Escreva duas funções:
 2) objetoParaPares(obj) faz o inverso, retornando um array de pares. */
 
 // Digitar abaixo nome da função que se quer executar:
+
+// Revisar execercício 2 //
