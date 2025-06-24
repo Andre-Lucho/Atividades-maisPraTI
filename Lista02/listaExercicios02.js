@@ -1,4 +1,4 @@
-// const prompt = require('prompt-sync')({ sigint: true });
+const prompt = require('prompt-sync')({ sigint: true });
 
 /* 
 Lista de Exercícios 2
@@ -23,7 +23,7 @@ function ehDataValida(dia, mes, ano) {
     !Number.isInteger(ano)
   ) {
     console.log(
-      'o(s) parâmetro(s) passados tem valor diferente de numeral.\nDigite valores válidos.\nSaindo...',
+      'O(s) parâmetro(s) passados tem valor diferente de numeral.\nDigite valores válidos.\nSaindo...',
     );
     return;
   }
@@ -36,7 +36,6 @@ function ehDataValida(dia, mes, ano) {
     console.log('false');
     return;
   }
-
   if (ano < 1970) {
     console.log('false');
     return;
@@ -60,36 +59,47 @@ function ehDataValida(dia, mes, ano) {
 /*
 2 - Jogo de Adivinhação
 ---------------------------------------
-Escreva  um  script  que  gere um número aleatório de 1 a 100 e peça ao usuário,  para  adivinhar.
+Escreva  um  script  que  gere um número aleatório de 1 a 100 e peça ao usuário para  adivinhar.
 Use  while  para  repetir  até  acertar,  contando tentativas e exibindo “mais alto” ou “mais baixo” a cada palpite errado. */
 
 function guessNumber() {
-  let userInput = 0;
-  let number = 1;
+  let userInput;
+  let attempts = 0;
+  const secretNumber = Math.round(Math.random() * 100 + 1);
 
-  while (number !== userInput) {
-    userInput = Number(prompt('Escolha um nuúmero de 1 a 100 e digite: '));
+  console.log('Bem-vindo ao Jogo: Adivinhação do Número Secreto!');
 
+  while (secretNumber !== userInput) {
+    userInput = Number(prompt('Escolha um número de 1 a 100 e digite: '));
     if (isNaN(userInput)) {
       console.log(
         'Você digitou um valor diferente de um numeral.\nDigite um valor válido...',
       );
-      return;
+      continue;
     }
-
     if (userInput < 1 || userInput > 100 || !Number.isInteger(userInput)) {
-      console.log('Por favor, digite um número inteiro entre 1 e 100.');
-      return;
+      console.log(
+        'Por favor, digite um número inteiro no intervalo entre 1 e 100.',
+      );
+      continue;
     }
 
-    number = Math.round(Math.random() * 100 + 1);
-
-    if (number === userInput) {
+    attempts++;
+    if (secretNumber === userInput) {
       console.log(
-        `Você acertou o número sorteado pelo PC: ${number} Parabéns!`,
+        `Você acertou o número sorteado pelo PC: ${secretNumber}! Parabéns!\nVocê precisou de ${attempts} tentativas!`,
       );
     } else {
-      console.log(`Você não acertou o número sorteado! Tente novamente`);
+      if (userInput < secretNumber) {
+        console.log(
+          `O número que você digitou ${userInput} é MUITO BAIXO! Tente novamente um número MAIS ALTO.`,
+        );
+      } else {
+        console.log(
+          `O número que você digitou (${userInput}) é MUITO ALTO! Tente novamente um número MAIS BAIXO.`,
+        );
+      }
+      console.log(`Numero de tentativas até agora: ${attempts}.`);
     }
   }
   console.log('Fim do jogo!');
@@ -329,7 +339,6 @@ function paresParaObjetoMap(pares) {
   });
   return console.log(newArr);
 }
-// paresParaObjetoMap(listaArray);
 
 // (1.b) com for...of:
 function paresParaObjetoFor(pares) {
@@ -344,7 +353,6 @@ function paresParaObjetoFor(pares) {
   }
   console.log(newArr);
 }
-// paresParaObjetoFor(listaArray);
 
 // (1.c) Com .reduce()
 function paresParaObjetoReduce(pares) {
@@ -357,7 +365,6 @@ function paresParaObjetoReduce(pares) {
   }, []);
   return console.log(newArr);
 }
-// paresParaObjetoReduce(listaArray);
 
 // 2)
 
@@ -370,8 +377,6 @@ function objetoParaParesMap(obj) {
   return console.log(newArr);
 }
 
-// objetoParaParesMap(listaObjeto);
-
 // 2.b) Com for...of
 
 function objetoParaParesFor(obj) {
@@ -383,4 +388,37 @@ function objetoParaParesFor(obj) {
   console.log(newArr);
 }
 
-// objetoParaParesFor(listaObjeto);
+/* Seção 1 
+----------------- */
+
+// 1
+// ehDataValida()
+// 2
+// guessNumber();
+// 3
+// singleWords()
+
+/* Seção 2 
+----------------- */
+// 4
+// fatorial()
+// 5
+// debounce()
+// 6
+// memoize()
+
+/*Seção 3
+----------------- */
+// 7
+// priceOrder()
+// 8
+// salesReduce()
+
+// 9
+//paresParaObjetoMap()
+//paresParaObjetoFor()
+// paresParaObjetoReduce
+
+// objetoParaParesMap()
+// objetoParaParesFor()
+// ()
