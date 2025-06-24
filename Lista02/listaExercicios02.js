@@ -100,7 +100,7 @@ function guessNumber() {
 ---------------------------------------
 Dada uma string (ex.: "olá olá mundo mundo"), use if/else e for para extrair todas as palavras únicas e exibi-las em um array. */
 
-function singleWord(str) {
+function singleWords(str) {
   if (!isNaN(str)) {
     console.log(
       'Você digitou algum valor diferente de uma string.\nDigite um valor válido...',
@@ -244,8 +244,6 @@ function priceOrder(prod) {
   return newNameReange;
 }
 
-console.log(priceOrder(product));
-
 /*
 8. Agrupamento por Propriedade​
 ---------------------------------------
@@ -255,35 +253,51 @@ let vendas = [
   {
     cliente: 'André',
     compras: [
-      { camisa: 'Polo-Azul', total: 50 },
-      { bermuda: 'Adidas-Verde', total: 100 },
-      { tenis: 'NikeAir', total: 200 },
+      { camisa: 'Polo-Azul', preco: 'R$50' },
+      { bermuda: 'Adidas-Verde', preco: 'R$100' },
+      { tenis: 'NikeAir', preco: 'R$200' },
     ],
   },
   {
     cliente: 'João',
     compras: [
-      { camisa: 'Polo-Vermelha', total: 65 },
-      { calça: 'Social-002', total: 80 },
-      { sapato: 'preto', total: 320 },
+      { camisa: 'Polo-Vermelha', preco: 'R$65' },
+      { calça: 'Social-002', preco: 'R$80' },
+      { sapato: 'preto', preco: 'R$320' },
     ],
   },
   {
     cliente: 'Sofia',
     compras: [
-      { blusa: 'Rosa002', total: 74 },
-      { bijuteria: '0232', total: 60 },
+      { blusa: 'Rosa002', preco: 'R$74' },
+      { bijuteria: '0232', preco: 'R$60' },
     ],
   },
   {
     cliente: 'Renata',
     compras: [
-      { capaCelular: 'Rosa002', total: 24 },
-      { enfeite: '032', total: 15 },
-      { caderno: 'Tilibra55', total: 40 },
+      { capaCelular: 'Rosa002', preco: 'R$24' },
+      { enfeite: '032', preco: 'R$15' },
+      { caderno: 'Tilibra55', preco: 'R$40' },
     ],
   },
 ];
+
+function salesReduce(arr) {
+  let newSalesArr = arr.slice();
+  const regexp = /[R$']/gi;
+
+  const sales = newSalesArr.map((sale) => {
+    const price = sale.compras.map((item) =>
+      Number(item.preco.replace(regexp, '')),
+    );
+    const total = price.reduce((acc, preco) => {
+      return acc + preco;
+    }, 0);
+    return `Cliente: ${sale.cliente} - Total da compra: R$ ${total.toFixed(2)}`;
+  });
+  return sales;
+}
 
 /*
 9. Conversão Entre Formatos​
@@ -292,6 +306,81 @@ Escreva duas funções:
 1)​ paresParaObjeto(pares) recebe um array de pares [ [chave, valor], … ] e retorna o objeto equivalente.
 2) objetoParaPares(obj) faz o inverso, retornando um array de pares. */
 
-// Digitar abaixo nome da função que se quer executar:
+// 1)
 
-// Revisar execercício 2 //
+let listaArray = [
+  ['camisa', 'Polo-Azul'],
+  ['bermuda', 'Adidas-Verde'],
+  ['tenis', 'NikeAir'],
+];
+
+let listaObjeto = [
+  { camisa: 'Polo-Azul' },
+  { bermuda: 'Adidas-Verde' },
+  { tenis: 'NikeAir' },
+];
+
+// (1.a) Com .map()
+function paresParaObjetoMap(pares) {
+  let newArr = pares.map((item) => {
+    let key = item[0];
+    let value = item[1];
+    return { [key]: value };
+  });
+  return console.log(newArr);
+}
+// paresParaObjetoMap(listaArray);
+
+// (1.b) com for...of:
+function paresParaObjetoFor(pares) {
+  let newArr = [];
+
+  for (let item of pares) {
+    let key = item[0];
+    let value = item[1];
+
+    const newObject = { [key]: value };
+    newArr.push(newObject);
+  }
+  console.log(newArr);
+}
+// paresParaObjetoFor(listaArray);
+
+// (1.c) Com .reduce()
+function paresParaObjetoReduce(pares) {
+  let newArr = pares.reduce((acc, item) => {
+    let key = item[0];
+    let value = item[1];
+    const newObject = { [key]: value };
+    acc.push(newObject);
+    return acc;
+  }, []);
+  return console.log(newArr);
+}
+// paresParaObjetoReduce(listaArray);
+
+// 2)
+
+// 2.a) Com .map()
+function objetoParaParesMap(obj) {
+  let newArr = obj.map((item) => {
+    const arr = Object.entries(item)[0];
+    return arr;
+  });
+  return console.log(newArr);
+}
+
+// objetoParaParesMap(listaObjeto);
+
+// 2.b) Com for...of
+
+function objetoParaParesFor(obj) {
+  let newArr = [];
+  for (const item of obj) {
+    const arr = Object.entries(item)[0];
+    newArr.push(arr);
+  }
+  console.log(newArr);
+}
+
+// objetoParaParesFor(listaObjeto);
