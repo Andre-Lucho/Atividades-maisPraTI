@@ -177,12 +177,21 @@ function debounce(fn, delay) {
     }, delay);
   };
 
+  // Função principal que quero que tenha eu tempo de execução e re-execução controlados:
+  // Ex.
   function mainFunction() {
-    // Função principal que quero que tenha eu tempo de execução e re-execução controlados
+    // console.log('Buscando por: ', texto);
   }
 
-  let mainFunctionDebounced = debounce(mainFunction, 1000);
   // Função 'debounced' da função 'mainFunction'
+  let mainFunctionDebounced = debounce(mainFunction, 1000);
+
+  // Aplicando a função debounced:
+  // --------------------------------------------------
+  // Ex.
+  // document.getElementById('nomeDoID').addEventListener('input', (event) => {
+  //   mainFunctionDebounced(event.target.value);
+  // });
 }
 
 /*
@@ -210,10 +219,10 @@ function memoize(fn) {
 // Função principal
 function mainFunction(n) {
   // condicional --> caso base
-  if (n > x) return n;
+  if (n < x) return n;
   // caso recursivo
   return mainFunction(n); // ...
-  // --> por exemplo a função mainFunction aplicada recursivamente
+  // --> função mainFunction aplicada recursivamente
 }
 
 // Função memoize da função mainFunction
@@ -222,7 +231,18 @@ const memoizedMainFunction = memoize(function mainFunction(n) {
   // --> por exemplo a função memoizedMainFunction aplicada recursivamente
 });
 
-// console.log(memoizedMainFunction(n));
+// ------------------------------------------------------------------------ //
+
+// Exemplo aplicado a Sequência de Fibonacci:
+function fibonacci(n) {
+  if (n < 2) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+const memoizedFibonacci = memoize(function fibonacci(n) {
+  if (n < 2) return n;
+  return memoizedFibonacci(n - 1) + memoizedFibonacci(n - 2);
+});
 
 /*
 Seção 3: Arrays e Objetos Complexos
@@ -239,8 +259,8 @@ let product = [
   { nome: 'Carro', preco: 'R$15000' },
 ];
 
-function priceOrder(prod) {
-  let newProduct = prod.slice();
+function priceOrder(arr) {
+  let newProduct = arr.slice();
   const regexp = /[R$']/gi;
 
   const newProdOrder = newProduct
@@ -388,37 +408,60 @@ function objetoParaParesFor(obj) {
   console.log(newArr);
 }
 
+// 2.c) Com .reduce()
+function objetoParaParesReduce(obj) {
+  let newArr = obj.reduce((acc, item) => {
+    const arr = Object.entries(item)[0];
+    acc.push(arr);
+    return acc;
+  }, []);
+  return console.log(newArr);
+}
+
 /* Seção 1 
 ----------------- */
 
-// 1
-// ehDataValida()
-// 2
+/*Exercício 1 - Validação de Datas --> Indique valores para o dia, mês e ano dentro do parênteses. */
+// ehDataValida(dia, mes, ano)
+
+/* Exercício 2 - Jogo de Adivinhação */
 // guessNumber();
-// 3
-// singleWords()
+
+/* Exercício 3 - Palavras Únicas --> Indique uma string dentro dos parênteses. */
+// singleWords('string')
 
 /* Seção 2 
 ----------------- */
-// 4
-// fatorial()
-// 5
-// debounce()
-// 6
-// memoize()
+
+/* Exercício 4 - Fatorial Recursivo --> Indique um número para cálculo do seu fatorial dentro dos parênteses. */
+// fatorial(n)
+
+/* Exercício 5 - Debounce​ --> Indique a função a se fazer o debounce e seu tempo de delay dentro dos parênteses. */
+// debounce(fn, delay)
+
+/* Exercício 6 - Memoize --> Indique a função a fazer o memoize dentro dos parênteses. */
+// memoize(fn)
+
+/* Exemplo do exercício: */
+// console.log(memoizedFibonacci(1000));
 
 /*Seção 3
 ----------------- */
-// 7
-// priceOrder()
-// 8
-// salesReduce()
 
-// 9
-//paresParaObjetoMap()
-//paresParaObjetoFor()
-// paresParaObjetoReduce
+/* Exercício 7 -  Mapeamento e Ordenação​ --> Indique o array a fazer o mapeamento e ordenação dentro dos parênteses. */
+// priceOrder(arr)
 
-// objetoParaParesMap()
-// objetoParaParesFor()
-// ()
+/* Exercício 8 - Agrupamento por Propriedade​ --> Indique o array a fazer o agrupamento, reduzindo a um array com apenas uma chave(nome) e o valor total somado da segunda chave (total da compra) dentro dos parênteses. */
+// salesReduce(arr)
+
+/* Exercício 9 - Conversão Entre Formatos​ */
+
+/* 1 - Indique o array a tranformar em objeto (dentro dos parênteses) em uma das opções abaixo. */
+//paresParaObjetoMap(pares)
+//paresParaObjetoFor(pares)
+// paresParaObjetoReduce(pares)
+
+/* 2- Indique o objeto a tranformar em array (dentro dos parênteses) em uma das opções abaixo. */
+// objetoParaParesMap(obj)
+// objetoParaParesFor(obj)
+// objetoParaParesReduce(obj);
