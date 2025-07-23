@@ -1,6 +1,12 @@
-# Orientações para o execução dos exercícios:
+# Repositório das atividades do Curso Dev FullStack +PraTI 2025
 
-O repositório está dividido em pastas correspondentes aos módulos do curso. As atividades de cada módulo encontram-se dentro de sua pasta correspondente.
+Esse repositório contém as atividades obrigatórias do curso Dev FullStack +PraTI 2025.  
+Abaixo, seguem as orientações para a visualização e execu dos exercícios.
+
+## Visualização e execução dos exercícios:
+
+O repositório está dividido em pastas correspondentes aos módulos do curso.  
+As atividades de cada módulo encontram-se dentro de sua pasta correspondente.
 
 # Pasta - Módulo 01
 
