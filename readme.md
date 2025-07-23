@@ -1,7 +1,7 @@
 # Repositório das atividades do Curso Dev FullStack +PraTI 2025
 
 Esse repositório contém as atividades obrigatórias do curso Dev FullStack +PraTI 2025.  
-Abaixo, seguem as orientações para a visualização e execu dos exercícios.
+Abaixo, seguem as orientações para a visualização e execução dos exercícios.
 
 ## Visualização e execução dos exercícios:
 
