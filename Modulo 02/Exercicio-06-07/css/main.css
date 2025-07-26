@@ -115,7 +115,7 @@ main h1 {
   max-width: 350px;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Sombra para destacar cada figura */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
   background-color: #efefef;
   text-align: center;
 }

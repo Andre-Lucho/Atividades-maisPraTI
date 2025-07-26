@@ -30,7 +30,6 @@ body {
 
 h3 {
   font-family: 'Outfit', sans-serif;
-
   color: #ececec;
   padding: 8px;
   text-align: center;
@@ -45,6 +44,10 @@ h3 {
 .lista-ordenada-container,
 .section-nav-container {
   margin: 1rem 2rem;
+}
+
+.lista-nao-ordenada-container {
+  margin-top: 0;
 }
 
 .lista-nao-ordenada-container h3,
@@ -78,11 +81,6 @@ h3 {
   flex-shrink: 0;
 }
 
-img {
-  width: 20%;
-  height: 20%;
-}
-
 .section-nav-container {
   background-color: #014fbb;
   padding: 8px;
@@ -113,4 +111,9 @@ img {
 
 li a:hover {
   color: #012a63;
+}
+
+footer {
+  margin: 0 auto;
+  padding-bottom: 10px;
 }
